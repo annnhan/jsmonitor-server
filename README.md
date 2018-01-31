@@ -1,7 +1,7 @@
 
 ## 项目简介
 
-凡普信贷 node.js 项目代码模板，server 基于 [hapi.js](https://hapijs.com/) , 前端基于 jquery/zepto 搭建。
+FEM server， 基于 [hapi.js](https://hapijs.com/)。
 
 ## 目录说明
 
