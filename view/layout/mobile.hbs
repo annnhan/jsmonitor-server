@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html style="-webkit-text-size-adjust:none;">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format、-detection">
+
+  <meta name="renderer" content="ebkit">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <link type="text/css" href="/static/common/css/normalize.scss" rel="stylesheet"/>
+  <script src="/static/public/zepto/zepto.min.js"></script>
+</head>
+<body style="margin: 0">
+{{{content}}}
+<script type="text/javascript">
+  // 输入框在虚拟键盘弹出时，自动滚动到可见位置
+  document.body.addEventListener('click', function (event) {
+    var element = event.target;
+    var tags = {
+      'INPUT': 1,
+      'TEXTAREA': 1,
+    }
+    if ((element.tagName in tags)) {
+      setTimeout(function () {
+        element.scrollIntoViewIfNeeded();
+        console.log('scrollIntoViewIfNeeded');
+      }, 400);
+    }
+  }, false);
+
+  // rem 布局计算
+  (function (doc, win) {
+    var docEl = doc.documentElement,
+      resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+      recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+      };
+
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window);
+</script>
+</body>
+</html>
